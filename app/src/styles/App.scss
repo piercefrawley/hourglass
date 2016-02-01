@@ -1,0 +1,41 @@
+body {
+	background-color: white;
+}
+
+div { box-sizing: border-box }
+
+.panel-container {
+	height: 900px;
+	width: 900px;
+}
+
+.panel {
+	opacity: 0.75;
+	display: inline-block;
+	height: 150px;
+	width: 150px;
+}
+
+.red {
+	background-color: red;
+}
+
+.orange {
+	background-color: orange;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+.green {
+	background-color: green;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.purple {
+	background-color: purple;
+}
