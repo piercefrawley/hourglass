@@ -8,7 +8,7 @@ const routes = {
   component: App,
   childRoutes: [
     { path: 'about', component: About },
-    { path: 'inbox', component: Index },
+    { path: 'index', component: Index },
     { path: 'seizure', component: Seizure }
   ]
 };

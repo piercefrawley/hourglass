@@ -11,7 +11,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class='root-level'>
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
@@ -20,7 +20,7 @@ export default class App extends React.Component {
           </Navbar.Header>
           <Nav>
             <NavItem><Link to="/about">About</Link></NavItem>
-            <NavItem><Link to="/inbox">Inbox</Link></NavItem>
+            <NavItem><Link to="/index">Index</Link></NavItem>
             <NavItem><Link to="/seizure">Seizure</Link></NavItem>
           </Nav>
         </Navbar>
