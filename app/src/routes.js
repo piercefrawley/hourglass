@@ -1,6 +1,6 @@
 import App from './components/App';
 import About from './components/About';
-import Index from './components/Index';
+import Counter from './components/Counter';
 import Seizure from './components/Seizure';
 
 const routes = {
@@ -8,7 +8,7 @@ const routes = {
   component: App,
   childRoutes: [
     { path: 'about', component: About },
-    { path: 'index', component: Index },
+    { path: 'realm', component: Counter },
     { path: 'seizure', component: Seizure }
   ]
 };
