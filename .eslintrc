@@ -6,7 +6,7 @@
     "mocha": true
   },
   "rules": {
-    "comma-dangle": [2],
+    "comma-dangle": [2, "always-multiline"],
     "func-names": 0,
     "eol-last": 0
   },

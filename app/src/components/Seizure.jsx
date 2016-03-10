@@ -10,20 +10,20 @@ export default class Seizure extends React.Component {
         'red', 'orange', 'yellow', 'green', 'blue', 'purple',
         'red', 'orange', 'yellow', 'green', 'blue', 'purple',
         'red', 'orange', 'yellow', 'green', 'blue', 'purple',
-        'red', 'orange', 'yellow', 'green', 'blue', 'purple'
-      ]
+        'red', 'orange', 'yellow', 'green', 'blue', 'purple',
+      ],
     };
   }
 
   randomizeColors(colors) {
     this.setState({
-      colors: shuffle(colors)
+      colors: shuffle(colors),
     });
   }
 
   render() {
     const {
-      colors
+      colors,
     } = this.state;
     return (
       <div>

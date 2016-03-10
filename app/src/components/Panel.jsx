@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react';
 
 export default class Panel extends React.Component {
   static propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
   };
 
   render() {
     const {
-      className
+      className,
     } = this.props;
     return (
       <div className={className}></div>

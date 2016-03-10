@@ -6,7 +6,7 @@ require('../styles/App.scss');
 
 export default class App extends React.Component {
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
   };
 
   render() {

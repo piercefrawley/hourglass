@@ -9,8 +9,8 @@ const routes = {
   childRoutes: [
     { path: 'about', component: About },
     { path: 'realm', component: Counter },
-    { path: 'seizure', component: Seizure }
-  ]
+    { path: 'seizure', component: Seizure },
+  ],
 };
 
 export { routes };
