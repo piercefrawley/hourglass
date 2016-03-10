@@ -2,7 +2,7 @@ import React from 'react';
 import { Router } from 'react-router';
 import { render } from 'react-dom';
 import { routes } from './routes';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { browserHistory } from 'react-router';
 
 
 function main() {
@@ -10,7 +10,7 @@ function main() {
 
   document.body.appendChild(app);
 
-  render(<Router routes={routes} history={createBrowserHistory()}/>, app);
+  render(<Router routes={routes} history={browserHistory}/>, app);
 }
 
 main();
