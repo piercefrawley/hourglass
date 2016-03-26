@@ -1,31 +1,43 @@
 import React, { PropTypes } from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { fromJS } from 'immutable';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { Route, Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import routes from '../routes';
+import seizure from '../redux/ducks/seizure';
+import Index from './Index';
+import About from './About';
+import Counter from './Counter';
+import Seizure from './Seizure';
 
-require('../styles/App.scss');
+const initialState = fromJS({
+  seizure: {
+    colors: [],
+  },
+});
+
+const store = createStore(
+  combineReducers({
+    ...seizure,
+    routing: routerReducer,
+  }),
+  initialState
+);
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 export default class App extends React.Component {
-  static propTypes = {
-    children: PropTypes.node,
-  };
-
   render() {
     return (
-      <div class='root-level'>
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="#">App</a>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav>
-            <NavItem><Link to="/about">About</Link></NavItem>
-            <NavItem><Link to="/realm">Realm</Link></NavItem>
-            <NavItem><Link to="/seizure">Seizure</Link></NavItem>
-          </Nav>
-        </Navbar>
-        {this.props.children}
-      </div>
+      <Provider store={store}>
+        <Router history={history}>
+          <Route path="/" component={Index}>
+            <Route path="seizure" component={Seizure}/>
+            <Route path="counter" component={Counter}/>
+          </Route>
+        </Router>
+      </Provider>
     );
   }
 }

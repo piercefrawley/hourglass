@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import counterMapDispatch from '../dispatch/counter';
-import counterMapStateToProps from '../ducks/counter';
+import counterMapDispatch from '../redux/dispatch/counter';
+import counterMapStateToProps from '../redux/ducks/counter';
 
 function Counter({ model, dispatch }) {
   return (

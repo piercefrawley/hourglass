@@ -1,33 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Panel from './Panel';
-import { shuffle } from 'lodash';
 
-export default class Seizure extends React.Component {
+class Seizure extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      colors: [
-        'red', 'orange', 'yellow', 'green', 'blue', 'purple',
-        'red', 'orange', 'yellow', 'green', 'blue', 'purple',
-        'red', 'orange', 'yellow', 'green', 'blue', 'purple',
-        'red', 'orange', 'yellow', 'green', 'blue', 'purple',
-      ],
-    };
   }
 
-  randomizeColors(colors) {
-    this.setState({
-      colors: shuffle(colors),
-    });
+  componentDidMount() {
+    const { dispatch, init } = this.props;
+    debugger;
+    dispatch(init());
   }
+
 
   render() {
     const {
       colors,
-    } = this.state;
+    } = this.props;
+    debugger;
     return (
       <div>
-        <button onClick={() => this.randomizeColors(colors)}>
+        <button>
           Randomize Seizure
         </button>
         <div className="panel-container">
@@ -37,3 +31,12 @@ export default class Seizure extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  debugger;
+  return {
+    colors: state.get('colors', []),
+  }
+}
+
+export default connect(mapStateToProps)

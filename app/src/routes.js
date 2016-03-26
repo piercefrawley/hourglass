@@ -1,16 +1,16 @@
-import App from './components/App';
+import Index from './components/Index';
 import About from './components/About';
 import Counter from './components/Counter';
 import Seizure from './components/Seizure';
 
 const routes = {
   path: '/',
-  component: App,
+  component: Index,
   childRoutes: [
-    { path: 'about', component: About },
-    { path: 'realm', component: Counter },
     { path: 'seizure', component: Seizure },
+    { path: 'about', component: About },
+    { path: 'counter', component: Counter },
   ],
 };
 
-export { routes };
+export default routes;
