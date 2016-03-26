@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import mapDispatchToProps from '../redux/dispatch/seizure';
 import Panel from './Panel';
 
 class Seizure extends React.Component {
@@ -8,17 +9,13 @@ class Seizure extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch, init } = this.props;
-    debugger;
-    dispatch(init());
+    this.props.init();
   }
-
 
   render() {
     const {
       colors,
     } = this.props;
-    debugger;
     return (
       <div>
         <button>
@@ -33,10 +30,13 @@ class Seizure extends React.Component {
 }
 
 function mapStateToProps(state) {
-  debugger;
-  return {
-    colors: state.get('colors', []),
-  }
+  return  {
+    colors: state.colors || [],
+    routing: state.routing,
+  };
 }
 
-export default connect(mapStateToProps)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Seizure)

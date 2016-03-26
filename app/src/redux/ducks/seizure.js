@@ -1,14 +1,19 @@
+import { INIT, SHUFFLE } from '../dispatch/seizure';
 import { fromJS } from 'immutable';
 import { repeat, shuffle } from 'lodash';
 
-function init(state, action) {
-  return state.setIn(['seizure', 'colors'],
-    repeat(['red', 'orange', 'yellow', 'green', 'blue', 'purple'], 4)
+export const init = (state, action) => {
+  return Object.assign({},
+    {
+      colors: repeat(['red', 'orange', 'yellow', 'green', 'blue', 'purple'], 4),
+    },
+    state,
   );
 }
 
-function randomizeColors(state, action) {
-  return state.updateIn(['seizure', 'colors'], colors => shuffle(colors));
+export const randomizeColors = (state, action) => {
+  const nextState = fromJS(state);
+  return nextState.updateIn(['seizure', 'colors'], colors => shuffle(colors));
 }
 
 export default function seizure(state = fromJS({}), action) {

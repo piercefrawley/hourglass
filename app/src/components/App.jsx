@@ -8,18 +8,11 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import routes from '../routes';
 import seizure from '../redux/ducks/seizure';
 
-const initialState = fromJS({
-  seizure: {
-    colors: [],
-  },
-});
-
 const store = createStore(
   combineReducers({
     ...seizure,
     routing: routerReducer,
-  }),
-  initialState
+  })
 );
 
 const history = syncHistoryWithStore(browserHistory, store);
