@@ -1,20 +1,13 @@
 import React, { PropTypes } from 'react';
-import { fromJS } from 'immutable';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Route, Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-
+import { syncHistoryWithStore } from 'react-router-redux';
+import configureStore from '../redux/utils/configureStore';
 import routes from '../routes';
-import seizure from '../redux/ducks/seizure';
 
-const store = createStore(
-  combineReducers({
-    ...seizure,
-    routing: routerReducer,
-  })
-);
+require('../styles/App.scss');
 
+const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 export default class App extends React.Component {

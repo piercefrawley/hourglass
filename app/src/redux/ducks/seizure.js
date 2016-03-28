@@ -1,30 +1,20 @@
-import { INIT, SHUFFLE } from '../dispatch/seizure';
 import { fromJS } from 'immutable';
-import { repeat, shuffle } from 'lodash';
+import { combineReducers } from 'redux';
+import { createAction, handleActions } from 'redux-actions';
+import { shuffle } from 'lodash';
 
-export const init = (state, action) => {
-  return Object.assign({},
-    {
-      colors: repeat(['red', 'orange', 'yellow', 'green', 'blue', 'purple'], 4),
-    },
-    state,
-  );
-}
+export const INIT = 'INIT';
+export const RANDOMIZE_COLORS = 'RANDOMIZE_COLORS';
 
-export const randomizeColors = (state, action) => {
-  const nextState = fromJS(state);
-  return nextState.updateIn(['seizure', 'colors'], colors => shuffle(colors));
-}
+export const initialize = createAction(INIT);
+export const randomize = createAction(RANDOMIZE_COLORS);
 
-export default function seizure(state = fromJS({}), action) {
-  switch (action.type) {
-    case INIT:
-      init();
-      break;
-    case SHUFFLE:
-      randomizeColors();
-      break;
-    default:
-      return state;
-  }
-}
+export const init = () => dispatch => dispatch(initialize());
+export const randomizeColors = () => dispatch => dispatch(randomize());
+
+export default handleActions({
+  [INIT]: state =>
+    state.set('colors', ['red', 'orange', 'yellow', 'green', 'blue', 'purple']),
+  [RANDOMIZE_COLORS]: state =>
+    state.update('colors', colors => shuffle(colors)),
+}, fromJS({}));

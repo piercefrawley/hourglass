@@ -1,20 +1,8 @@
-export const INIT = 'INIT';
-export const RANDOMIZE_COLORS = 'RANDOMIZE_COLORS';
+import { init, randomizeColors } from '../ducks/seizure';
 
-function init() {
-  return {
-    type: INIT,
-  }
-}
-
-function randomizeColors() {
-  return {type: RANDOMIZE_COLORS}
-}
-
-export default function mapDispatchToProps(dispatch, props) {
-  debugger;
+export default function seizureMapDispatch(dispatch) {
   return {
     init: () => dispatch(init()),
     randomizeColors: () => dispatch(randomizeColors()),
-  };
+  }
 }
