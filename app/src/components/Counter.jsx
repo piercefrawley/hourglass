@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import counterMapDispatch from '../redux/dispatch/counter';
-import counterMapStateToProps from '../redux/ducks/counter';
+import counterMapStateToProps from '../redux/selectors/counter';
 
-function Counter({ model, dispatch }) {
+function Counter({ count, increment, decrement }) {
   return (
     <div>
-      Count: {model}
-      <button onClick={() => dispatch({ type: INCREMENT })}>+</button>
-      <button onClick={() => dispatch({ type: DECREMENT })}>-</button>
+      Count: {count}
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
     </div>
   );
 }
 
 export default connect(
-  counterMapDispatch,
   counterMapStateToProps,
+  counterMapDispatch,
 )(Counter);

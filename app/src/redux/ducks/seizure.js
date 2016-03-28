@@ -11,7 +11,6 @@ export const initialize = createAction(INIT);
 export const randomize = createAction(RANDOMIZE_COLORS);
 
 export const init = () => dispatch => {
-  debugger;
   const colors = Array.apply(null, Array(NUM_PANELS)).map(() => {
     return ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
   })

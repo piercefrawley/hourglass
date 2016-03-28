@@ -1,15 +1,8 @@
-const init = (initialCount = 0) => initialCount;
+import { increment, decrement } from '../ducks/counter';
 
-const INCREMENT = 'counter/INCREMENT';
-const DECREMENT = 'counter/DECREMENT';
-
-const update = (count, action) => {
-  switch (action.type) {
-    case INCREMENT:
-      return count + 1;
-    case DECREMENT:
-      return count - 1;
-    default:
-      return count
+export default function counterMapDispatch(dispatch) {
+  return {
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
   }
 }

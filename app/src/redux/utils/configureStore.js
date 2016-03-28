@@ -8,6 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import DevTools from '../../components/DevTools';
 import seizure from '../ducks/seizure';
+import counter from '../ducks/counter';
 
 const optimistTransformer = (action, id, status) => {
   let type;
@@ -30,6 +31,7 @@ const loggerMiddleware = createLogger({
 
 const reducer = combineReducers({
     seizure: seizure,
+    counter: counter,
     routing: routerReducer,
   },
 );
@@ -52,9 +54,5 @@ const enhancer = (store) => compose(
 
 
 export default function configureStore(initialState = {}) {
-  return createStore(
-    reducer,
-    initialState,
-    enhancer,
-  )
+  return createStore(reducer, initialState, enhancer);
 }
