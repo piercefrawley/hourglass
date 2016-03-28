@@ -13,9 +13,11 @@ class Seizure extends React.Component {
   render() {
     const { colors = [], randomizeColors } = this.props;
     return (
-      <div>
-        <button onClick={randomizeColors}>RANDOMIZE</button>
-        <div className="panel-container">
+      <div className="flex-container-column">
+        <button onClick={randomizeColors}>
+          <span>RANDOMIZE</span>
+        </button>
+        <div className="flex-container-row">
           {colors.map(color => (<Panel className={`${color} panel`}/>))}
         </div>
       </div>

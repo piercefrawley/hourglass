@@ -5,17 +5,17 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          <li>
+        <span className='flex-container-row'>
+          <button className='router-link'>
             <Link to="/">Home</Link>
-          </li>
-          <li>
+          </button>
+          <button className='router-link'>
             <Link to="seizure">Seizure</Link>
-          </li>
-          <li>
+          </button>
+          <button className='router-link'>
             <Link to="counter">Counter</Link>
-          </li>
-        </ul>
+          </button>
+        </span>
         {this.props.children}
       </div>
     )
