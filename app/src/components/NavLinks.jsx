@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default function NavLinks({routerParams: {routes}}) {
-  debugger;
+export default function NavLinks(props) {
   return (
     <div className='flex-container-row'>
       <button className='router-link'>
