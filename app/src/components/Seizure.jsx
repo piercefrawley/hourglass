@@ -4,22 +4,25 @@ import mapDispatchToProps from '../redux/dispatch/seizure';
 import mapStateToProps from '../redux/selectors/seizure';
 import Panel from './Panel';
 
+const audioContext = new AudioContext();
+
 class Seizure extends React.Component {
   constructor(props) {
     super(props);
     props.init();
   }
 
-  _generateTone() {
-    let audioContext = new AudioContext();
-
+  _generateTone(n) {
     let oscillator = audioContext.createOscillator();
+
     oscillator.connect(audioContext.destination);
 
     oscillator.type = 'sine';
+    oscillator.frequency.value = `${n}${n}0`;
+    oscillator.detune.value = `${n}00`;
 
     oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 1);
+    oscillator.stop(audioContext.currentTime + .05);
   }
 
   render() {
@@ -30,8 +33,12 @@ class Seizure extends React.Component {
           <span>RANDOMIZE</span>
         </button>
         <div className="flex-container-row">
-          {colors.map(color => (
-            <Panel onClick={this._generateTone} className={`${color} panel`}/>
+          {colors.map((color, n) => (
+            <Panel
+              className={`${color} panel`}
+              onMouseOver={() => this._generateTone(n)}
+              index={n}
+              />
           ))}
         </div>
       </div>

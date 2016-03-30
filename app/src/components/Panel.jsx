@@ -6,9 +6,9 @@ export default class Panel extends React.Component {
   };
 
   render() {
-    const { className, onClick } = this.props;
+    const { className, onMouseOver } = this.props;
     return (
-      <div onClick={onClick} className={className}></div>
+      <div onMouseOver={onMouseOver} className={className}></div>
     );
   }
 }
