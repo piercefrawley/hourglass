@@ -7,9 +7,6 @@ class Index extends React.Component {
       <div>
         <span className='flex-container-row'>
           <button className='router-link'>
-            <Link to="/">Home</Link>
-          </button>
-          <button className='router-link'>
             <Link to="seizure">Seizure</Link>
           </button>
           <button className='router-link'>

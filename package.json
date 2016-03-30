@@ -51,6 +51,7 @@
     "redux": "^3.0.4",
     "redux-actions": "^0.9.1",
     "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.5",
     "redux-logger": "^2.6.1",
     "redux-optimist": "0.0.2",
     "redux-simple-promise": "^2.0.2",
