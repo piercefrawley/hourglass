@@ -37,7 +37,6 @@ class Seizure extends React.Component {
             <Panel
               className={`${color} panel`}
               onMouseOver={() => this._generateTone(n)}
-              index={n}
               />
           ))}
         </div>
