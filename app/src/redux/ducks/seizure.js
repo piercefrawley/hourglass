@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { createAction, handleActions } from 'redux-actions';
 import { shuffle } from 'lodash';
 
-const NUM_PANELS = 1;
+const NUM_ROWS = 6;
 export const INIT = 'INIT';
 export const RANDOMIZE_COLORS = 'RANDOMIZE_COLORS';
 
@@ -11,7 +11,7 @@ export const initialize = createAction(INIT);
 export const randomize = createAction(RANDOMIZE_COLORS);
 
 export const init = () => dispatch => {
-  const colors = Array.apply(null, Array(NUM_PANELS)).map(() => {
+  const colors = Array.apply(null, Array(NUM_ROWS)).map(() => {
     return ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
   })
   dispatch(initialize({colors: [].concat.apply([], colors)}));
