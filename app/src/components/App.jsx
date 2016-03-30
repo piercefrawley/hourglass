@@ -6,7 +6,7 @@ import DevTools from './DevTools';
 import configureStore from '../redux/utils/configureStore';
 import routes from '../routes';
 
-require('../styles/App.scss');
+require('../styles/app.scss');
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
@@ -17,7 +17,9 @@ export default class App extends React.Component {
       <Provider store={store}>
         <div>
           <Router routes={routes} history={history}/>
-          <DevTools />
+          <div className="hidden">
+            <DevTools />
+          </div>
         </div>
       </Provider>
     );
