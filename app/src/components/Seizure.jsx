@@ -22,7 +22,7 @@ class Seizure extends React.Component {
     oscillator.detune.value = `${n}00`;
 
     oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + .05);
+    oscillator.stop(audioContext.currentTime + .25);
   }
 
   render() {
