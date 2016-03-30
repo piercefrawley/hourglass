@@ -6,9 +6,9 @@ export default class Panel extends React.Component {
   };
 
   render() {
-    const { className } = this.props;
+    const { className, onClick } = this.props;
     return (
-      <div className={className}></div>
+      <div onClick={onClick} className={className}></div>
     );
   }
 }

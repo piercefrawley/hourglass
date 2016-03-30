@@ -10,6 +10,18 @@ class Seizure extends React.Component {
     props.init();
   }
 
+  _generateTone() {
+    let audioContext = new AudioContext();
+
+    let oscillator = audioContext.createOscillator();
+    oscillator.connect(audioContext.destination);
+
+    oscillator.type = 'sine';
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 1);
+  }
+
   render() {
     const { colors = [], randomizeColors } = this.props;
     return (
@@ -18,7 +30,9 @@ class Seizure extends React.Component {
           <span>RANDOMIZE</span>
         </button>
         <div className="flex-container-row">
-          {colors.map(color => (<Panel className={`${color} panel`}/>))}
+          {colors.map(color => (
+            <Panel onClick={this._generateTone} className={`${color} panel`}/>
+          ))}
         </div>
       </div>
     );
