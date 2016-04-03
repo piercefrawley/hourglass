@@ -16,13 +16,11 @@ export const init = () => dispatch => {
   const colors = Array.apply(null, Array(NUM_ROWS)).map(() => {
     return ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
   });
-  dispatch(initialize({ notes: {}, colors: [].concat.apply([], colors) }));
+  dispatch(initialize({ notes: [], colors: [].concat.apply([], colors) }));
 }
 
 export const randomizeColors = () => dispatch => dispatch(randomize());
-export const addNote = (note) => dispatch => {
-  dispatch(add());
-}
+export const addNote = (note) => dispatch => dispatch(add(note));
 
 export default handleActions({
   [INIT]: (state, { payload: { notes, colors }}) => {
@@ -34,6 +32,9 @@ export default handleActions({
     return state.update('colors', colors => shuffle(colors));
   },
   [ADD_NOTE]: (state, { payload: { note } }) => {
-    return state.update('notes', notes => notes.push(note));
+    return state.update('notes', notes => {
+      notes.push(note);
+      return notes;
+    });
   },
 }, fromJS({}));
