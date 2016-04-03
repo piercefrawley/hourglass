@@ -4,6 +4,11 @@ import TonalInterface from '../interfaces/tonal';
 
 
 class Seizure extends React.Component {
+  constructor(props) {
+    super(props);
+    props.init();
+  }
+
   render() {
     const { colors = [], randomizeColors, generateTone } = this.props;
     return (
