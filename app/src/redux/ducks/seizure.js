@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { createAction, handleActions } from 'redux-actions';
 import { shuffle } from 'lodash';
 
-const NUM_ROWS = 1;
+const NUM_ROWS = 6;
 export const INIT = 'INIT';
 export const RANDOMIZE_COLORS = 'RANDOMIZE_COLORS';
 export const ADD_NOTE = 'ADD_NOTE';
