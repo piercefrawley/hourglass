@@ -6,10 +6,10 @@ export default class Panel extends React.Component {
   };
 
   render() {
-    const { className, onMouseOver, content } = this.props;
+    const { className, onMouseOver, note = { index: "" } }= this.props;
     return (
       <div onMouseOver={onMouseOver} className={className}>
-        {JSON.stringify(content)}
+        {note.index}
       </div>
     );
   }

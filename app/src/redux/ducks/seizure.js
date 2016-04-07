@@ -34,6 +34,7 @@ export default handleActions({
   [ADD_NOTE]: (state, { payload: { note } }) => {
     return state.update('notes', notes => {
       notes.push(note);
+      debugger;
       return notes;
     });
   },

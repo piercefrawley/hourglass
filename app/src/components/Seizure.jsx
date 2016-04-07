@@ -9,8 +9,19 @@ class Seizure extends React.Component {
     props.init();
   }
 
+  _onMouseOverPanel(n) {
+    this.props.generateTone(n);
+    this.props.addNote({ index: n });
+  }
+
   render() {
-    const { colors = [], randomizeColors, generateTone } = this.props;
+    const {
+      colors = [],
+      notes = [],
+      randomizeColors,
+      generateTone,
+      addNote,
+    } = this.props;
     return (
       <div className="flex-container-column">
         <button onClick={randomizeColors}>
@@ -20,7 +31,8 @@ class Seizure extends React.Component {
           {colors.map((color, n) => (
             <Panel
               className={`${color} panel`}
-              onMouseOver={() => generateTone(n)}
+              note={notes[n]}
+              onMouseOver={() => this._onMouseOverPanel(n)}
               />
           ))}
         </div>
