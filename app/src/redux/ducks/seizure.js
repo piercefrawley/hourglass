@@ -5,12 +5,12 @@ import { shuffle } from 'lodash';
 
 const NUM_ROWS = 6;
 export const INIT = 'INIT';
-export const RANDOMIZE_COLORS = 'RANDOMIZE_COLORS';
-export const ADD_NOTE = 'ADD_NOTE';
+export const RANDOMIZE = 'RANDOMIZE_COLORS';
+export const ADD = 'ADD_NOTE';
 
 export const initialize = createAction(INIT);
-export const randomize = createAction(RANDOMIZE_COLORS);
-export const add = createAction(ADD_NOTE);
+export const randomize = createAction(RANDOMIZE);
+export const add = createAction(ADD);
 
 export const init = () => dispatch => {
   const colors = Array.apply(null, Array(NUM_ROWS)).map(() => {
@@ -19,7 +19,10 @@ export const init = () => dispatch => {
   dispatch(initialize({ notes: [], colors: [].concat.apply([], colors) }));
 }
 
-export const randomizeColors = () => dispatch => dispatch(randomize());
+export const randomizeColors = () => (dispatch, getState) => {
+  const { seizure } = getState();
+  dispatch(randomize({colors: shuffle(seizure.get('colors', []))}));
+};
 export const addNote = (note) => dispatch => dispatch(add(note));
 
 export default handleActions({
@@ -28,13 +31,12 @@ export default handleActions({
       .set('notes', notes)
       .set('colors', colors);
   },
-  [RANDOMIZE_COLORS]: (state) => {
-    return state.update('colors', colors => shuffle(colors));
+  [RANDOMIZE]: (state, { payload: { colors }}) => {
+    return state.set('colors', colors);
   },
-  [ADD_NOTE]: (state, { payload: { note } }) => {
+  [ADD]: (state, { payload: { note } }) => {
     return state.update('notes', notes => {
       notes.push(note);
-      debugger;
       return notes;
     });
   },

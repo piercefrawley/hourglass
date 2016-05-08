@@ -22,6 +22,10 @@ export default function createInterface(Component) {
   const audioContext = getAudioContext();
 
   class TonalInterface extends React.Component {
+    shouldComponentUpdate(nextProps) {
+      return true;
+    }
+
     constructor(props) {
       super(props);
       props.init();
