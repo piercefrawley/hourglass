@@ -23,6 +23,7 @@ export const randomizeColors = () => (dispatch, getState) => {
   const { seizure } = getState();
   dispatch(randomize({colors: shuffle(seizure.get('colors', []))}));
 };
+
 export const addNote = (note) => dispatch => dispatch(add(note));
 
 export default handleActions({
