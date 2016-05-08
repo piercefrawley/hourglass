@@ -1,10 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import mapDispatchToProps from '../redux/dispatch/seizure';
-import mapStateToProps from '../redux/selectors/seizure';
 import Panel from './Panel';
+import TonalInterface from '../interfaces/tonal';
 
-const audioContext = new AudioContext();
 
 class Seizure extends React.Component {
   constructor(props) {
@@ -12,21 +9,19 @@ class Seizure extends React.Component {
     props.init();
   }
 
-  _generateTone(n) {
-    let oscillator = audioContext.createOscillator();
-
-    oscillator.connect(audioContext.destination);
-
-    oscillator.type = 'sine';
-    oscillator.frequency.value = `${n}${n}0`;
-    oscillator.detune.value = `${n}00`;
-
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + .25);
+  _onMouseOverPanel(n) {
+    this.props.generateTone(n);
+    this.props.addNote({ index: n });
   }
 
   render() {
-    const { colors = [], randomizeColors } = this.props;
+    const {
+      colors = [],
+      notes = [],
+      randomizeColors,
+      generateTone,
+      addNote,
+    } = this.props;
     return (
       <div className="flex-container-column">
         <button onClick={randomizeColors}>
@@ -36,7 +31,8 @@ class Seizure extends React.Component {
           {colors.map((color, n) => (
             <Panel
               className={`${color} panel`}
-              onMouseOver={() => this._generateTone(n)}
+              note={notes[n]}
+              onMouseOver={() => this._onMouseOverPanel(n)}
               />
           ))}
         </div>
@@ -44,8 +40,4 @@ class Seizure extends React.Component {
     );
   }
 }
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Seizure)
+  export default TonalInterface(Seizure);
